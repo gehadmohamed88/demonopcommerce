@@ -2,11 +2,14 @@ package org.example.stepDefs;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.pages.P01_register;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.asserts.SoftAssert;
 
 public class D01_registerStepDef {
 
@@ -47,12 +50,16 @@ public class D01_registerStepDef {
     @And("user enter date of birth")
     public void userEnterDateOfBirth()
     {
+        Select selectday = new Select(register.dateofbirthday());
+        selectday.selectByValue("8");
 
-        register.dateofbirthday().click();
+        Select selectmonth = new Select(register.dateofbirthmonth());
+        selectmonth.selectByValue("8");
 
-        register.dateofbirthmonth().click();
+       Select selectyear = new Select(register.dateofbirthyears());
+       selectyear.selectByValue("1994");
 
-        register.dateofbirthyears().click();
+
 
 
     }
@@ -63,7 +70,7 @@ public class D01_registerStepDef {
     {
 
 
-        register.enteremail().sendKeys("test@example.com");
+        register.enteremail().sendKeys("test@example1.com");
 
     }
 
@@ -78,6 +85,34 @@ public class D01_registerStepDef {
 
 
     }
+
+    @And("user clicks on register button")
+    public void userClicksOnRegisterButton()
+    {
+
+        register.clickregisterbutton().click();
+
+    }
+
+
+    @Then("success message is displayed")
+    public void successMessageIsDisplayed()
+    {
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertTrue(register.sucessmessagedisplayed().getText().contains("completed"));
+
+        String actualcolor = register.sucessmessagedisplayed().getCssValue("color");
+
+        softAssert.assertEquals(Color.fromString(actualcolor).asHex(),"#4cb17c");
+
+
+
+
+        softAssert.assertAll();
+
+
+    }
+
 
 
 }

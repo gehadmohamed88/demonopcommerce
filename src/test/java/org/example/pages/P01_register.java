@@ -45,7 +45,7 @@ public class P01_register
     public WebElement dateofbirthday()
     {
 
-        return Hooks.driver.findElement(By.cssSelector("select[name=\"DateOfBirthDay\"] option[value=\"8\"]"));
+        return Hooks.driver.findElement(By.cssSelector("select[name=\"DateOfBirthDay\"]"));
 
     }
 
@@ -53,7 +53,7 @@ public class P01_register
     public WebElement dateofbirthmonth()
     {
 
-        return Hooks.driver.findElement(By.cssSelector("select[name=\"DateOfBirthMonth\"] option[value=\"8\"]"));
+        return Hooks.driver.findElement(By.cssSelector("select[name=\"DateOfBirthMonth\"]"));
 
     }
 
@@ -62,7 +62,7 @@ public class P01_register
     public WebElement dateofbirthyears()
     {
 
-        return Hooks.driver.findElement(By.cssSelector("select[name=\"DateOfBirthYear\"] option[value=\"1994\"]"));
+        return Hooks.driver.findElement(By.cssSelector("select[name=\"DateOfBirthYear\"]"));
 
     }
 
@@ -88,6 +88,22 @@ public class P01_register
         return Hooks.driver.findElement(By.id("ConfirmPassword"));
 
     }
+
+    public WebElement clickregisterbutton()
+    {
+
+        return Hooks.driver.findElement(By.id("register-button"));
+
+    }
+
+
+    public WebElement sucessmessagedisplayed()
+    {
+
+        return Hooks.driver.findElement(By.className("result"));
+
+    }
+
 
 
 
