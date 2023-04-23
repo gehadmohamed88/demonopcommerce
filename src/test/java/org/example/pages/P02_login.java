@@ -49,6 +49,13 @@ public class P02_login
     }
 
 
+    public String getactualurl()
+    {
+        return Hooks.driver.getCurrentUrl();
+
+    }
+
+
 
 
 

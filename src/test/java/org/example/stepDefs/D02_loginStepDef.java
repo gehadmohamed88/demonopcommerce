@@ -51,6 +51,9 @@ public class D02_loginStepDef
     SoftAssert softAssert = new SoftAssert();
     softAssert.assertTrue(login.myaccountdisplayed().isDisplayed());
 
+    String expectedurl= "https://demo.nopcommerce.com/";
+    softAssert.assertEquals(login.getactualurl(),expectedurl);
+
 
 
 
