@@ -5,6 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.pages.P02_login;
+import org.openqa.selenium.support.Color;
 import org.testng.asserts.SoftAssert;
 
 public class D02_loginStepDef
@@ -22,14 +23,13 @@ public class D02_loginStepDef
   }
 
 
-  @When(": user login with {string} {string} and {string}")
-  public void userLoginWithAnd(String arg0, String arg1, String arg2)
+  @When(": user login with valid {string} and {string}")
+  public void userLoginWithValidAnd(String arg0, String arg1)
   {
 
-     login.enteremail().sendKeys("test@example.com");
+    login.enteremail().sendKeys("test@example.com");
 
-     login.enterpassword().sendKeys("P@ssw0rd");
-
+    login.enterpassword().sendKeys("P@ssw0rd");
 
 
   }
@@ -55,13 +55,46 @@ public class D02_loginStepDef
     softAssert.assertEquals(login.getactualurl(),expectedurl);
 
 
-
-
     softAssert.assertAll();
 
 
 
   }
+
+
+  @When(": user login with invalid {string} and {string}")
+  public void userLoginWithInvalidAnd(String arg0, String arg1)
+  {
+
+    login.enterwrongemail().sendKeys("wrong@example.com");
+
+    login.enterpassword().sendKeys("P@ssw0rd");
+
+
+  }
+
+
+  @Then(": user could not login to the system")
+  public void userCouldNotLoginToTheSystem()
+  {
+
+   SoftAssert softAssert = new SoftAssert();
+   softAssert.assertTrue(login.cannotlogin().getText().contains("Login was unsuccessful"));
+
+   String actualcolor = login.cannotlogin().getCssValue("color");
+
+    softAssert.assertEquals(Color.fromString(actualcolor).asHex(), "#e4434b");
+
+
+
+   softAssert.assertAll();
+
+
+  }
+
+
+
+
 
 
 }

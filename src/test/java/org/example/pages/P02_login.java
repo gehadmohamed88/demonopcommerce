@@ -55,10 +55,20 @@ public class P02_login
 
     }
 
+    public WebElement enterwrongemail()
+    {
+
+        return Hooks.driver.findElement(By.id("Email"));
+
+    }
+
+    public  WebElement cannotlogin()
+    {
+
+        return Hooks.driver.findElement(By.cssSelector("div[class=\"message-error validation-summary-errors\"]"));
 
 
-
-
+    }
 
 
 
