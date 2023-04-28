@@ -7,5 +7,14 @@ Feature: F04_Search | users could search using product name or sku
     Examples:
       | productname |
       | laptop      |
-      | book        |
       | nike        |
+
+  Scenario Outline: user could search for product using sku
+    When : search using thee "<productsku>"
+    Then : the results will appear successfullyy using the "<productsku>"
+
+    Examples:
+      | productsku |
+      | SCI_FAITH  |
+      | APPLE_CAM  |
+      | SF_PRO_11  |

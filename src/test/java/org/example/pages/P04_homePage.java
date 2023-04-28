@@ -27,19 +27,31 @@ public class P04_homePage
     }
 
 
-    public List<WebElement> listofraw()
+
+    public List<WebElement> listoftitle()
     {
 
-        return Hooks.driver.findElements(By.cssSelector("div[class=\"product-item\"]"));
+        return Hooks.driver.findElements(By.cssSelector("h2[class=\"product-title\"] a"));
 
 
     }
 
 
-    public List<WebElement> listoftitle()
+    public WebElement findsku()
     {
 
-        return Hooks.driver.findElements(By.cssSelector("h2[class=\"product-title\"]"));
+        return Hooks.driver.findElement(By.cssSelector("div[class=\"product-item\"] "));
+
+
+    }
+
+
+    public WebElement comparesku()
+    {
+
+
+        return Hooks.driver.findElement(By.cssSelector("div[class=\"sku\"]"));
+
 
 
     }

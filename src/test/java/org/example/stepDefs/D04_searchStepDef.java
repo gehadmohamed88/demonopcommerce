@@ -27,30 +27,50 @@ public class D04_searchStepDef
     public void theResultsWillAppearSuccessfullyUsingThe(String productname)
     {
 
-        SoftAssert softAssert = new SoftAssert();
-        softAssert.assertTrue(Hooks.driver.getCurrentUrl().contains(productname));
+
+        Assert.assertTrue(Hooks.driver.getCurrentUrl().contains(productname));
 
 
-        for (int i = 0; i < searching.listofraw().size(); i++)
+        for (int i = 0; i < searching.listoftitle().size(); i++)
         {
 
 
-            softAssert.assertTrue(searching.listoftitle().get(i).getText().toLowerCase().contains(productname));
+            Assert.assertTrue(searching.listoftitle().get(i).getText().toLowerCase().contains(productname));
 
             System.out.println(searching.listoftitle().get(i).getText().toLowerCase()        );
             System.out.println(productname);
 
 
         }
-        softAssert.assertAll();
+
+
 
 
 
     }
 
 
+    @When(": search using thee {string}")
+    public void searchUsingThee(String productsku)
+    {
+
+        searching.productsname().sendKeys(productsku);
+        searching.search().click();
+        searching.findsku().click();
 
 
+
+    }
+
+
+    @Then(": the results will appear successfullyy using the {string}")
+    public void theResultsWillAppearSuccessfullyyUsingThe(String productsku)
+    {
+
+        Assert.assertTrue(searching.comparesku().getText().contains(productsku));
+
+
+    }
 
 
 }
